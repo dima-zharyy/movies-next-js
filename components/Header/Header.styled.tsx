@@ -21,17 +21,15 @@ export const Menu = styled.header`
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
 
-export const Navigation = styled.nav`
+export const List = styled.ul`
   display: flex;
   gap: 10px;
 `;
 
 export const StyledLink = styled(Link)`
   color: #fff;
-  transition: all 250ms linear;
-  &.active {
-    border-bottom: 2px solid #f4f74b;
-  }
+  transition: color 250ms linear;
+
   &:hover {
     color: #f4f74b;
   }
