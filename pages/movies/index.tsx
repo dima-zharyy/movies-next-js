@@ -1,31 +1,34 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import { SearchBar, MoviesList, notify } from "../../components";
+import { SearchBar, MoviesList, notify, TMoviesList } from "../../components";
 import { Container } from "./movies.styled.jsx";
-import { getMovies } from "service";
+import { getMovies } from "../../service/api";
+import { useRouter } from "next/router";
+import { TMovies } from "../../service/apiTypes";
 
 export default function Movies() {
-  const [movies, setMovies] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get("query");
+  const [movies, setMovies] = useState<TMovies>([]);
+  const router = useRouter();
+
+  console.log(router);
 
   useEffect(() => {
-    if (!query) {
+    if (!router.query.query) {
+      setMovies([]);
       return;
     }
 
-    getMovies(query)
+    getMovies<TMovies>(router.query.query)
       .then((data) => {
         setMovies(data);
         if (data.length === 0) {
-          notify(`There is no result on query: ${query}`);
+          notify(`There is no result on query: ${router.query.query}`);
         }
       })
       .catch((error) => console.log(error.message));
-  }, [query]);
+  }, [router.query.query]);
 
-  const handleSubmit = (query) => {
-    setSearchParams({ query });
+  const handleSubmit = (query: string) => {
+    router.push(`${router.pathname}?query=${query}`);
 
     window.scrollTo({
       top: 0,

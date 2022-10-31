@@ -1,8 +1,9 @@
-import { MovieItem, TMovieItemProps } from "../../components";
+import { MovieItem } from "../../components";
+import { TMovies } from "../../service/apiTypes";
 import { List } from "./MoviesList.styled";
 
-type TMoviesList = {
-  movies: [TMovieItemProps];
+export type TMoviesList = {
+  movies: TMovies;
 };
 
 export const MoviesList: React.FC<TMoviesList> = ({ movies }) => {

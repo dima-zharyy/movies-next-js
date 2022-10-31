@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import { Movie, Poster, Title, Item } from "./MovieItem.styled";
 
 export type TMovieItemProps = {
@@ -12,15 +11,13 @@ export const MovieItem: React.FC<TMovieItemProps> = ({
   poster_path,
   title,
 }) => {
-  const location = useLocation();
-  const link = location.pathname.includes("movies") ? `${id}` : `movies/${id}`;
-
+  
   const imgPlaceholder = `https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg`;
   const imgUrl = `https://image.tmdb.org/t/p/w500/${poster_path}`;
 
   return (
     <Item>
-      <Movie to={link} state={{ from: location }}>
+      <Movie href={`/movies/${id}`}>
         <Poster
           src={poster_path ? imgUrl : imgPlaceholder}
           alt={title}

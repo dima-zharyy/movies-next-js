@@ -2,9 +2,12 @@ import React, { ReactFragment, useState } from "react";
 import { Form, Button, Input } from "./SearchBar.styled";
 import { ImSearch } from "react-icons/im";
 import { notify } from "../../components";
-import PropTypes from "prop-types";
 
-export const SearchBar = ({ onSubmit }) => {
+type TSearchBarProps = {
+  onSubmit: (query: string) => void;
+};
+
+export const SearchBar: React.FC<TSearchBarProps> = ({ onSubmit }) => {
   const [query, setQuery] = useState("");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -21,7 +24,9 @@ export const SearchBar = ({ onSubmit }) => {
     setQuery("");
   };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setQuery(event.target.value);
   };
 
@@ -40,8 +45,4 @@ export const SearchBar = ({ onSubmit }) => {
       />
     </Form>
   );
-};
-
-SearchBar.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };
