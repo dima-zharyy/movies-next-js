@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import {
   Wrapper,
   Container,
@@ -8,14 +7,15 @@ import {
   Subtitle,
   BackLink,
 } from "./Details.styled";
-import { GenresList, AdditionalInfo } from "components";
-import PropTypes from "prop-types";
+import { IMovieDetails } from "../../service/apiTypes";
+import { GenresList, AdditionalInfo } from "../../components";
 
-export const Details = ({ movieDetails }) => {
-  const location = useLocation();
-  const backLinkHref = location.state?.from ?? "/";
+type TPropsDetails = {
+  movie: IMovieDetails;
+};
 
-  const { title, overview, vote_average, genres, poster_path } = movieDetails;
+export const Details: React.FC<TPropsDetails> = ({ movie }) => {
+  const { title, overview, vote_average, genres, poster_path } = movie;
 
   const imgPlaceholder = `https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg`;
   const imgUrl = `https://image.tmdb.org/t/p/w500/${poster_path}`;
@@ -31,19 +31,9 @@ export const Details = ({ movieDetails }) => {
         <Text>{overview ? overview : `Sorry! There is no overview`}</Text>
         <Subtitle>Genres</Subtitle>
         <GenresList genres={genres} />
-        <AdditionalInfo location={backLinkHref} />
-        <BackLink to={backLinkHref}>go back</BackLink>
+        <AdditionalInfo />
+        {/* <BackLink to={backLinkHref}>go back</BackLink> */}
       </Wrapper>
     </Container>
   );
-};
-
-Details.propTypes = {
-  movieDetails: PropTypes.exact({
-    genres: PropTypes.arrayOf(PropTypes.object),
-    overview: PropTypes.string,
-    poster_path: PropTypes.string,
-    title: PropTypes.string,
-    vote_average: PropTypes.number,
-  }),
 };

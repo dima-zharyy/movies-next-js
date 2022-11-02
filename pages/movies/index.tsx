@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { SearchBar, MoviesList, notify, TMoviesList } from "../../components";
-import { Container } from "./movies.styled.jsx";
+import { Container } from "./index.styled.jsx";
 import { getMovies } from "../../service/api";
 import { useRouter } from "next/router";
 import { TMovies } from "../../service/apiTypes";
@@ -8,8 +8,6 @@ import { TMovies } from "../../service/apiTypes";
 export default function Movies() {
   const [movies, setMovies] = useState<TMovies>([]);
   const router = useRouter();
-
-  console.log(router);
 
   useEffect(() => {
     if (!router.query.query) {

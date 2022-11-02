@@ -3,6 +3,7 @@ import Link from "next/link";
 
 export const Container = styled.div`
   display: flex;
+  padding: 15.5px;
 `;
 
 export const Poster = styled.img`
