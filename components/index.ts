@@ -6,5 +6,5 @@ export * from "./MovieItem/MovieItem";
 export * from "./MoviesList/MoviesList";
 export * from "./Details/Details";
 export * from "./AdditionalInfo/AdditionalInfo";
-// export * from "./CastList/CastList";
+export * from "./CastList/CastList";
 export * from "./GenresList/GenresList";

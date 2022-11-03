@@ -12,7 +12,7 @@ export const Navigation = styled.nav`
   gap: 16px;
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

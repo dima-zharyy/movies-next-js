@@ -7,8 +7,8 @@
 //   Container,
 // } from "./CastList.styled";
 // import PropTypes from "prop-types";
-export const AAA = () => {
-  return <AAA></AAA>;
+export const CastList = () => {
+  return <h1>Cast List</h1>;
 };
 // export const CastList = ({ castInfo }) => {
 //   const imgUrl = `https://image.tmdb.org/t/p/w500/`;

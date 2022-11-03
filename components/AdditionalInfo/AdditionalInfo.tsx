@@ -13,15 +13,10 @@ export const AdditionalInfo = () => {
     <Container>
       <Subtitle>Additional Information</Subtitle>
       <Navigation>
-        <StyledLink
-          href={{
-            pathname: "/movies/[id]/cast",
-            query: { id: router.query.id },
-          }}
-        >
+        <StyledLink onClick={() => router.push(`${router.query.slug}/cast`)}>
           Cast
         </StyledLink>
-        <StyledLink href={`${router.pathname}/reviews`}>Reviews</StyledLink>
+        <StyledLink>Reviews</StyledLink>
       </Navigation>
     </Container>
   );
