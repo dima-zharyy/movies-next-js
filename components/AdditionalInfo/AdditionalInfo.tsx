@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useCallback } from "react";
 import {
   StyledLink,
   Container,
@@ -8,15 +9,45 @@ import {
 
 export const AdditionalInfo = () => {
   const router = useRouter();
-  console.log(router);
+
+  const handleLinkClick = useCallback(
+    (path: string): void => {
+      if (router.query.slug) {
+        router.replace(`${router.query?.slug[0]}/${path}`, undefined, {
+          scroll: false,
+          shallow: true,
+        });
+      }
+    },
+    [router]
+  );
+
+  let castActive = "";
+  let reviewsActive = "";
+
+  if (router.query.slug) {
+    castActive = router.query.slug[1] === "cast" ? "active" : "";
+    reviewsActive = router.query?.slug[1] === "reviews" ? "active" : "";
+  }
+
   return (
     <Container>
       <Subtitle>Additional Information</Subtitle>
       <Navigation>
-        <StyledLink onClick={() => router.push(`${router.query.slug}/cast`)}>
+        <StyledLink
+          className={castActive}
+          type="button"
+          onClick={() => handleLinkClick("cast")}
+        >
           Cast
         </StyledLink>
-        <StyledLink>Reviews</StyledLink>
+        <StyledLink
+          className={reviewsActive}
+          type="button"
+          onClick={() => handleLinkClick("reviews")}
+        >
+          Reviews
+        </StyledLink>
       </Navigation>
     </Container>
   );

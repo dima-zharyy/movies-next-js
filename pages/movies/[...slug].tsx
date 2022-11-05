@@ -1,29 +1,42 @@
 import { useRouter } from "next/router";
-import { getDetails } from "../../service/api";
+import { getCredits, getDetails, getReviews } from "../../service/api";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { CastList, Details } from "../../components";
+import { CastList, Details, ReviewsList } from "../../components";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  console.log(params);
-  const movie = await getDetails(params?.slug);
+  const id = params?.slug;
+
+  const [movie, reviews, castInfo] = await Promise.all([
+    getDetails(id),
+    getReviews(id),
+    getCredits(id),
+  ]);
 
   return {
-    props: { movie }, // will be passed to the page component as props
+    props: { movie, reviews, castInfo }, // will be passed to the page component as props
   };
 };
 
-export default function Movie(
-  props: InferGetServerSidePropsType<typeof getServerSideProps>
-) {
+export default function Movie({
+  movie,
+  reviews,
+  castInfo,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter();
 
-  console.log(router);
+  let isCast = false;
+  let isReviews = false;
+
+  if (router.query.slug) {
+    isCast = router.query?.slug[1] === "cast";
+    isReviews = router.query?.slug[1] === "reviews";
+  }
 
   return (
     <>
-      <Details movie={props.movie} />
-      {router?.query?.slug[1] === "cast" && <CastList />}
-      {router?.query?.slug[1] === "reviews" && <CastList />}
+      <Details movie={movie} />
+      {isCast && <CastList castInfo={castInfo} />}
+      {isReviews && <ReviewsList reviews={reviews} />}
     </>
   );
 }

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { SearchBar, MoviesList, notify, TMoviesList } from "../../components";
-import { Container } from "./index.styled.jsx";
 import { getMovies } from "../../service/api";
 import { useRouter } from "next/router";
 import { TMovies } from "../../service/apiTypes";
@@ -35,9 +34,9 @@ export default function Movies() {
   };
 
   return (
-    <Container>
+    <>
       <SearchBar onSubmit={handleSubmit} />
       {movies.length > 0 && <MoviesList movies={movies} />}
-    </Container>
+    </>
   );
 }

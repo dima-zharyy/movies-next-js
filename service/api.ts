@@ -28,7 +28,9 @@ export const getDetails = async (
   return { title, overview, vote_average, genres, poster_path };
 };
 
-export const getCredits = async <T>(id: string): Promise<T> => {
+export const getCredits = async <T>(
+  id: string | string[] | undefined
+): Promise<T> => {
   const response = await axios.get(
     `/movie/${id}/credits?api_key=${apiKey}&language=en-US`
   );
@@ -36,7 +38,9 @@ export const getCredits = async <T>(id: string): Promise<T> => {
   return response.data.cast;
 };
 
-export const getReviews = async <T>(id: string): Promise<T> => {
+export const getReviews = async <T>(
+  id: string | string[] | undefined
+): Promise<T> => {
   const response = await axios.get(
     `/movie/${id}/reviews?api_key=${apiKey}&language=en-US&page=1`
   );

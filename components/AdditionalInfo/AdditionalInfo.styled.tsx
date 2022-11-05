@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { link } from "fs";
 import Link from "next/link";
 
 export const Container = styled.div``;
@@ -12,7 +13,7 @@ export const Navigation = styled.nav`
   gap: 16px;
 `;
 
-export const StyledLink = styled.div`
+export const StyledLink = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;

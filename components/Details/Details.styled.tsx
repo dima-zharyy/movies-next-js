@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Link from "next/link";
 
 export const Container = styled.div`
   display: flex;
@@ -35,7 +34,7 @@ export const Subtitle = styled.h2`
   margin-bottom: 10px;
 `;
 
-export const BackLink = styled(Link)`
+export const BackLink = styled.button`
   position: absolute;
   top: 0;
   right: 0;

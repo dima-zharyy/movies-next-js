@@ -9,12 +9,15 @@ import {
 } from "./Details.styled";
 import { IMovieDetails } from "../../service/apiTypes";
 import { GenresList, AdditionalInfo } from "../../components";
+import { useRouter } from "next/router";
 
 type TPropsDetails = {
   movie: IMovieDetails;
 };
 
 export const Details: React.FC<TPropsDetails> = ({ movie }) => {
+  const router = useRouter();
+
   const { title, overview, vote_average, genres, poster_path } = movie;
 
   const imgPlaceholder = `https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg`;
@@ -32,7 +35,9 @@ export const Details: React.FC<TPropsDetails> = ({ movie }) => {
         <Subtitle>Genres</Subtitle>
         <GenresList genres={genres} />
         <AdditionalInfo />
-        {/* <BackLink to={backLinkHref}>go back</BackLink> */}
+        <BackLink type="button" onClick={() => router.back()}>
+          go back
+        </BackLink>
       </Wrapper>
     </Container>
   );
