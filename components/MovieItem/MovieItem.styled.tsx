@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Image from "next/image";
 import Link from "next/link";
 
 export const Item = styled.li`
@@ -23,7 +24,7 @@ export const Movie = styled(Link)`
   text-decoration: none;
 `;
 
-export const Poster = styled.img`
+export const Poster = styled(Image)`
   width: 100%;
   height: auto;
   object-fit: cover;

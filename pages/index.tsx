@@ -1,5 +1,5 @@
 // import Head from "next/head";
-// import Image from "next/image";
+
 import { MoviesList } from "../components";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { getTrending } from "../service/api";

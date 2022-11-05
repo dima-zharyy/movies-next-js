@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Movie, Poster, Title, Item } from "./MovieItem.styled";
 
 export type TMovieItemProps = {
@@ -11,7 +12,6 @@ export const MovieItem: React.FC<TMovieItemProps> = ({
   poster_path,
   title,
 }) => {
-  
   const imgPlaceholder = `https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg`;
   const imgUrl = `https://image.tmdb.org/t/p/w500/${poster_path}`;
 
@@ -21,7 +21,8 @@ export const MovieItem: React.FC<TMovieItemProps> = ({
         <Poster
           src={poster_path ? imgUrl : imgPlaceholder}
           alt={title}
-          loading="lazy"
+          width="100"
+          height="150"
         />
         <Title>{title}</Title>
       </Movie>
