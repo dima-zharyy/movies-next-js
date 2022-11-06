@@ -3,6 +3,7 @@ import { SearchBar, MoviesList, notify, TMoviesList } from "../../components";
 import { getMovies } from "../../service/api";
 import { useRouter } from "next/router";
 import { TMovies } from "../../service/apiTypes";
+import Head from "next/head";
 
 export default function Movies() {
   const [movies, setMovies] = useState<TMovies>([]);
@@ -35,6 +36,9 @@ export default function Movies() {
 
   return (
     <>
+      <Head>
+        <title>Search Movies</title>
+      </Head>
       <SearchBar onSubmit={handleSubmit} />
       {movies.length > 0 && <MoviesList movies={movies} />}
     </>

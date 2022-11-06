@@ -9,3 +9,4 @@ export * from "./AdditionalInfo/AdditionalInfo";
 export * from "./CastList/CastList";
 export * from "./GenresList/GenresList";
 export * from "./ReviewsList/ReviewsList";
+export * from "./NotExist/NotExist";

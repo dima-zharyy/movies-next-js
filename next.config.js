@@ -2,13 +2,15 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "**.tmdb.org",
-      },
-    ],
+    domains: ["upload.wikimedia.org", "image.tmdb.org"],
+    // remotePatterns: [
+    //   {
+    //     // protocol: "https",
+    //     // hostname: "**.tmdb.org",
+    //   },
+    // ],
   },
 };
 

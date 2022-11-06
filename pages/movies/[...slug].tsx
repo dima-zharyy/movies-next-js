@@ -2,19 +2,26 @@ import { useRouter } from "next/router";
 import { getCredits, getDetails, getReviews } from "../../service/api";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { CastList, Details, ReviewsList } from "../../components";
+import Head from "next/head";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const id = params?.slug;
+  try {
+    const id = params?.slug;
 
-  const [movie, reviews, castInfo] = await Promise.all([
-    getDetails(id),
-    getReviews(id),
-    getCredits(id),
-  ]);
+    const [movie, reviews, castInfo] = await Promise.all([
+      getDetails(id),
+      getReviews(id),
+      getCredits(id),
+    ]);
 
-  return {
-    props: { movie, reviews, castInfo }, // will be passed to the page component as props
-  };
+    return {
+      props: { movie, reviews, castInfo }, // will be passed to the page component as props
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 };
 
 export default function Movie({
@@ -34,6 +41,9 @@ export default function Movie({
 
   return (
     <>
+      <Head>
+        <title>{movie.title}</title>
+      </Head>
       <Details movie={movie} />
       {isCast && <CastList castInfo={castInfo} />}
       {isReviews && <ReviewsList reviews={reviews} />}

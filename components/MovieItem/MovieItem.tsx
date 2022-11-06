@@ -23,6 +23,7 @@ export const MovieItem: React.FC<TMovieItemProps> = ({
           alt={title}
           width="100"
           height="150"
+          sizes="(max-width:3000px) 10vw"
         />
         <Title>{title}</Title>
       </Movie>
