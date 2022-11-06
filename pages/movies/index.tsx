@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { TMovies } from "../../service/apiTypes";
 import Head from "next/head";
 
-export default function Movies() {
+export default function Movies(): React.ReactNode {
   const [movies, setMovies] = useState<TMovies>([]);
   const router = useRouter();
 

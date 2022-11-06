@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { NotExist } from "../components";
 
-export default function NotFound() {
+export default function NotFound(): React.ReactNode {
   return (
     <>
       <Head>

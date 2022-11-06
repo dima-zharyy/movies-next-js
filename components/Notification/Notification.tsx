@@ -1,6 +1,6 @@
 import { ToastContainer, toast } from "react-toastify";
 
-export const Notification = () => {
+export const Notification: React.FC = () => {
   return (
     <ToastContainer
       position="top-right"

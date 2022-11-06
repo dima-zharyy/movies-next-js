@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Movie, Poster, Title, Item } from "./MovieItem.styled";
 
 export type TMovieItemProps = {
@@ -23,7 +22,7 @@ export const MovieItem: React.FC<TMovieItemProps> = ({
           alt={title}
           width="100"
           height="150"
-          sizes="(max-width:3000px) 10vw"
+          sizes="(max-width:3000px)"
         />
         <Title>{title}</Title>
       </Movie>

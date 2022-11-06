@@ -7,7 +7,7 @@ import {
   Subtitle,
 } from "./AdditionalInfo.styled";
 
-export const AdditionalInfo = () => {
+export const AdditionalInfo: React.FC = () => {
   const router = useRouter();
 
   const handleLinkClick = useCallback(

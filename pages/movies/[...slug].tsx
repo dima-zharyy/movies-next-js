@@ -28,7 +28,7 @@ export default function Movie({
   movie,
   reviews,
   castInfo,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>): React.ReactNode {
   const router = useRouter();
 
   let isCast = false;

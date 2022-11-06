@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 export default function Home({
   movies,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>): React.ReactNode {
   return (
     <>
       <Head>

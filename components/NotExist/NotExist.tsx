@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import css from "./NotExist.module.css";
 
-export const NotExist = () => {
+export const NotExist: React.FC = () => {
   const router = useRouter();
 
   return (
