@@ -3,7 +3,7 @@ import { IMovieDetails } from "./apiTypes";
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
-const apiKey = "4f7db32deafa46415b96d8eae8667c0e";
+const apiKey = process.env.API_KEY;
 
 export const getTrending = async <T>(): Promise<T> => {
   const response = await axios.get(`/trending/movie/week?api_key=${apiKey}`);
