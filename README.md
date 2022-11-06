@@ -2,4 +2,4 @@
 
 Movies search application created by using React, Next.js, TypeScript and third-party API
 
-Try it here -
+Try it here - https://dma-movies-next.vercel.app/
